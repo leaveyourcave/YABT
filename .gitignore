@@ -38,9 +38,6 @@ UserInterfaceState.xcuserstate
 ### Git ###
 *.orig
 
-### Less ###
-*.css
-
 ### Node ###
 # Logs
 logs
