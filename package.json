@@ -1,7 +1,7 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "YABT",
+  "author": "Leave your cave",
+  "homepage": "http://leaveyourcave.com",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -47,5 +47,5 @@
       "locator": "ios"
     }
   ],
-  "description": "YABT: An Ionic project"
+  "description": "YABT: Yet Another Budgeting Tool"
 }
