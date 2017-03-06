@@ -14,29 +14,21 @@ export class DashboardPage {
     constructor(public navCtrl: NavController, public navParams: NavParams, private db: Database) { }
 
     ionViewDidLoad() {
-        let transformedSummaryData = this.db.getAllData();
-
         let dashboardChartArea = this.dashboardChart.nativeElement;
-        console.log(transformedSummaryData);
-        c3.generate({
-            bindto: dashboardChartArea,
-            data: {
-                type: 'donut',
-                columns: transformedSummaryData,
-                onclick: function(d, i) {
-                    console.log("Button clicked!", d, i);
+        let data = this.db.getAllData().then((val) => {
+            console.log(val);
+            let chartConfiguration = {
+                bindto: dashboardChartArea,
+                data: {
+                    type: 'donut',
+                    columns: val
                 },
-                onmouseover: function(d, i) {
-                    console.log("Mouse over!", d, i);
-                },
-                onmouseout: function(d, i) {
-                    console.log("Mouse out!", d, i);
+                donut: {
+                    title: "Users age"
                 }
-            },
-            donut: {
-                title: "Users age"
-            }
-        });
-    }
-
+            };
+            c3.generate(chartConfiguration);
+          }
+        );
+      }
 }

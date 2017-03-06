@@ -16,19 +16,14 @@ export class Database {
     }
 
     public getAllData() {
-        let data;
         let s = this.storage;
-        s.ready().then(() => {
+        return s.ready().then(() => {
             // Or to get a key/value pair
             console.log('ready... fetching');
-            s.get('mocked').then((val) => {
+            return s.get('mocked').then((val) => {
                 console.log('I\'ve got data...', val);
-                data = val;
+                return val;
             })
         });
-
-        console.log('Returning data...', data);
-
-        return data;
     }
 }
