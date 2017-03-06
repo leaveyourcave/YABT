@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Database } from "../../providers/database";
 import * as c3 from 'c3';
 
 @Component({
@@ -10,24 +11,18 @@ export class DashboardPage {
 
     @ViewChild('dashboardChart') dashboardChart: ElementRef;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) { }
+    constructor(public navCtrl: NavController, public navParams: NavParams, private db: Database) { }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad DashboardPage');
+        let transformedSummaryData = this.db.getAllData();
 
         let dashboardChartArea = this.dashboardChart.nativeElement;
-
+        console.log(transformedSummaryData);
         c3.generate({
             bindto: dashboardChartArea,
             data: {
                 type: 'donut',
-                columns: [
-                    ['Under 10', 30],
-                    ['10-12', 25],
-                    ['13-15', 20],
-                    ['15-18', 15],
-                    ['Above 18', 10]
-                ],
+                columns: transformedSummaryData,
                 onclick: function(d, i) {
                     console.log("Button clicked!", d, i);
                 },
@@ -43,4 +38,5 @@ export class DashboardPage {
             }
         });
     }
+
 }
