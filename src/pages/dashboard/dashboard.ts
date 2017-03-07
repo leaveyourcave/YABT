@@ -1,6 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Database } from "../../providers/database";
+import { TooltipData } from "./tooltip-data";
+import { DashboardTooltipComponent } from "./dashboard-tooltip.component";
 import * as c3 from 'c3';
 import * as d3 from 'd3';
 
@@ -11,12 +13,13 @@ import * as d3 from 'd3';
 export class DashboardPage {
 
     @ViewChild('dashboardChart') dashboardChart: ElementRef;
-    @ViewChild('tooltipTemplate') tooltipTemplate: ElementRef;
+    @ViewChild(DashboardTooltipComponent) tooltipComponent: DashboardTooltipComponent;
 
-    private data = {
-        title: "",
-        thisMonth: 0,
-        lastMonth: 0,
+    tooltipInput: TooltipData = {
+        categoryName: "",
+        categoryColor: "",
+        currentMonth: 0,
+        previousMonth: 0,
         budgetLimit: 0,
         trend: 0
     };
@@ -45,10 +48,10 @@ export class DashboardPage {
                 },
                 tooltip: {
                     contents: function(d, defaultTitleFormat, defaultValueFormat, color) {
-                        dashboard.data.title = d[0].name;
-                        dashboard.data.thisMonth = d[0].value;
-                        // return this.getTooltipContent(d, defaultTitleFormat, defaultValueFormat, color);
-                        return dashboard.tooltipTemplate.nativeElement.innerHTML;
+                        dashboard.tooltipInput.categoryName = d[0].name;
+                        dashboard.tooltipInput.currentMonth = d[0].value;
+
+                        return dashboard.tooltipComponent.tooltipTemplate.nativeElement.innerHTML;
                     }
                 }
             };

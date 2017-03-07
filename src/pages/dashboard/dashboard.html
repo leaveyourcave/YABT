@@ -14,26 +14,4 @@
   <div id="dashboardChart" #dashboardChart></div>
 </ion-content>
 
-  <div #tooltipTemplate hidden="true">
-    <table class='c3-tooltip'>
-    <tr>
-      <th colspan="2"><p textContent="{{data.title}}"></p></th>
-    </tr>
-    <tr>
-      <td >This month $</td>
-      <td ><p textContent="{{data.thisMonth}}"></p></td>
-    </tr>
-    <tr>
-      <td >Last month $</td>
-      <td ><p textContent="{{data.lastMonth}}"></td>
-    </tr>
-    <tr>
-      <td >Budget limit</td>
-      <td ><p textContent="{{data.budgetLimit}}"></td>
-    </tr>
-    <tr>
-      <td >Trend</td>
-      <td ><p textContent="{{data.trend}}"></td>
-    </tr>
-    </table>
-  </div>
+<dashboard-tooltip [tooltipData]="tooltipInput"></dashboard-tooltip>

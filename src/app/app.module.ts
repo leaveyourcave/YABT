@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { CategoriesPage } from '../pages/categories/categories';
 import { Database } from '../providers/database';
+import { DashboardTooltipComponent } from '../pages/dashboard/dashboard-tooltip.component';
 
 export function provideStorage() {
     return new Storage(['sqlite', 'websql', 'indexeddb'], { name: '__mydb' });
@@ -15,7 +16,8 @@ export function provideStorage() {
     declarations: [
         MyApp,
         DashboardPage,
-        CategoriesPage
+        CategoriesPage,
+        DashboardTooltipComponent
     ],
     imports: [
         IonicModule.forRoot(MyApp)
