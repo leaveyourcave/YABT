@@ -1,22 +1,26 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Camera } from 'ionic-native';
 
-/*
-  Generated class for the Billscan page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
-  selector: 'page-billscan',
-  templateUrl: 'billscan.html'
+    selector: 'page-billscan',
+    templateUrl: 'billscan.html'
 })
 export class BillscanPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+    public base64Image: string;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BillscanPage');
-  }
+    constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
+    ionViewDidLoad() {
+        Camera.getPicture({
+            destinationType: Camera.DestinationType.DATA_URL,
+            targetWidth: 1000,
+            targetHeight: 1000
+        }).then((imageData) => {
+            this.base64Image = "data:image/jpeg;base64," + imageData;
+        }, (err) => {
+            console.log(err);
+        });
+    }
 }

@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { CategoriesPage } from '../pages/categories/categories';
+import { BillscanPage } from '../pages/billscan/billscan';
 import { Database } from '../providers/database';
 import { DashboardTooltipComponent } from '../pages/dashboard/dashboard-tooltip.component';
 
@@ -17,6 +18,7 @@ export function provideStorage() {
         MyApp,
         DashboardPage,
         CategoriesPage,
+        BillscanPage,
         DashboardTooltipComponent
     ],
     imports: [
@@ -26,7 +28,8 @@ export function provideStorage() {
     entryComponents: [
         MyApp,
         DashboardPage,
-        CategoriesPage
+        CategoriesPage,
+        BillscanPage
     ],
     providers: [
         { provide: Storage, useFactory: provideStorage },
