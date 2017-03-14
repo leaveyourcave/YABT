@@ -1,4 +1,4 @@
-import { Component, Input, Output, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef } from '@angular/core';
 import { TooltipData } from './tooltip-data';
 
 @Component({
