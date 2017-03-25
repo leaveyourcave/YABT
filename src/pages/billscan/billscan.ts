@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Camera } from 'ionic-native';
+import Tesseract from 'tesseract.js';
 
 @Component({
     selector: 'page-billscan',
@@ -8,19 +9,27 @@ import { Camera } from 'ionic-native';
 })
 export class BillscanPage {
 
-    public base64Image: string;
+    @ViewChild('scannedImg')
+    private scannedImg: ElementRef;
 
     constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
     ionViewDidLoad() {
-        Camera.getPicture({
-            destinationType: Camera.DestinationType.DATA_URL,
-            targetWidth: 1000,
-            targetHeight: 1000
-        }).then((imageData) => {
-            this.base64Image = "data:image/jpeg;base64," + imageData;
-        }, (err) => {
-            console.log(err);
-        });
+
+        // Camera.getPicture({
+        //     destinationType: Camera.DestinationType.FILE_URI,
+        //     quality: 50,
+        //     targetWidth: 1000,
+        //     targetHeight: 1000
+        // }).then((image) => {
+        //     this.imidz = image;
+        // }, (err) => {
+        //     console.log(err);
+        // });
+
+        Tesseract.recognize(this.scannedImg.nativeElement.src)
+            .then((tesseractResult) => {
+                console.log(tesseractResult);
+            });
     }
 }
