@@ -4,10 +4,10 @@ import { Camera } from 'ionic-native';
 import Tesseract from 'tesseract.js';
 
 @Component({
-    selector: 'page-billscan',
-    templateUrl: 'billscan.html'
+    selector: 'receipt-scan',
+    templateUrl: 'receiptscan.html'
 })
-export class BillscanPage {
+export class ReceiptScanPage {
 
     @ViewChild('scannedImg')
     private scannedImg: ElementRef;
