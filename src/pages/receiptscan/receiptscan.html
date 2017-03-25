@@ -12,8 +12,17 @@
 
 <ion-content padding>
   <ion-card>
+      <img src="../../assets/test/text.png" #scannedImg />
+
+      <ion-card-header>
+      Result:
+      </ion-card-header>
+
       <ion-card-content>
-        <img src="../../assets/test/text.jpg" #scannedImg />
+        <span>STATUS: {{progress}}</span>
+      </ion-card-content>
+      <ion-card-content>
+        <span>{{recognizedText}}</span>
       </ion-card-content>
     </ion-card>
 </ion-content>
