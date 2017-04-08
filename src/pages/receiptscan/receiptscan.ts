@@ -15,6 +15,7 @@ export class ReceiptScanPage {
     private recognizedText: string;
     private progress: any;
     private result: any;
+    private d: Date;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public cd: ChangeDetectorRef) { }
 
@@ -35,6 +36,8 @@ export class ReceiptScanPage {
     }
 
     recognizeText(image) {
+      this.d = new Date();
+
         Tesseract.recognize(image)
             .progress((progress) => {
                 var progressStatus = progress.status + " [" + Math.ceil(progress.progress * 100) + "%]";
@@ -48,7 +51,8 @@ export class ReceiptScanPage {
             .then((tesseractResult) => {
                 console.log(tesseractResult);
                 // console.log(JSON.stringify(tesseractResult)); - circular json
-
+                let t = new Date();
+                console.log("millis", (t.getTime() - this.d.getTime()) );
                 this.result = tesseractResult;
                 this.recognizedText = tesseractResult.text;
 
