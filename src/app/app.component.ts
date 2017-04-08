@@ -6,7 +6,6 @@ import { StatusBar } from 'ionic-native';
 
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { CategoriesPage } from '../pages/categories/categories';
-import { ReceiptScanPage } from '../pages/receiptscan/receiptscan';
 
 @Component({
     templateUrl: 'app.html'
@@ -22,8 +21,7 @@ export class MyApp {
 
         this.pages = [
             { title: 'Dashboard', component: DashboardPage },
-            { title: 'Categories', component: CategoriesPage },
-            { title: 'Receipt scan', component: ReceiptScanPage }
+            { title: 'Categories', component: CategoriesPage }
         ];
     }
 
